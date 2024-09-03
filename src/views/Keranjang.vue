@@ -3,94 +3,88 @@
     <Navbar :updateKeranjang="keranjangs" />
     <div class="container mx-auto px-4">
       <!-- breadcrumb -->
-      <div class="row mt-4">
-        <div class="col">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb flex space-x-2 text-sm text-gray-600">
-              <li class="breadcrumb-item">
-                <router-link to="/" class="text-gray-700 hover:text-gray-900">Home</router-link>
-              </li>
-              <li class="breadcrumb-item">
-                <router-link to="/foods" class="text-gray-700 hover:text-gray-900">Foods</router-link>
-              </li>
-              <li class="breadcrumb-item text-gray-500" aria-current="page">Keranjang</li>
-            </ol>
-          </nav>
-        </div>
+      <div class="mt-4">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb flex flex-wrap space-x-2 text-xs md:text-sm text-gray-600">
+            <li class="breadcrumb-item">
+              <router-link to="/" class="text-gray-700 hover:text-gray-900">Home</router-link>
+            </li>
+            <li class="breadcrumb-item">
+              <router-link to="/foods" class="text-gray-700 hover:text-gray-900">Foods</router-link>
+            </li>
+            <li class="breadcrumb-item text-gray-500" aria-current="page">Keranjang</li>
+          </ol>
+        </nav>
       </div>
 
-      <div class="row">
-        <div class="col">
-          <h2 class="text-2xl font-bold mb-4">
-            Keranjang
-            <strong>Saya</strong>
-          </h2>
-          <div class="table-responsive mt-3">
-            <table class="table-auto w-full text-left text-sm">
-              <thead>
-                <tr class="bg-gray-200">
-                  <th class="px-4 py-2">#</th>
-                  <th class="px-4 py-2">Foto</th>
-                  <th class="px-4 py-2">Makanan</th>
-                  <th class="px-4 py-2">Keterangan</th>
-                  <th class="px-4 py-2">Jumlah</th>
-                  <th class="px-4 py-2">Harga</th>
-                  <th class="px-4 py-2">Total Harga</th>
-                  <th class="px-4 py-2">Hapus</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(keranjang, index) in keranjangs" :key="keranjang.id" class="border-b">
-                  <td class="px-4 py-2">{{ index + 1 }}</td>
-                  <td class="px-4 py-2">
-                    <img :src="'../assets/images/' + keranjang.products.gambar" class="w-32 h-32 object-cover rounded-lg shadow" />
-                  </td>
-                  <td class="px-4 py-2">
-                    <strong>{{ keranjang.products.nama }}</strong>
-                  </td>
-                  <td class="px-4 py-2">{{ keranjang.keterangan ? keranjang.keterangan : "-" }}</td>
-                  <td class="px-4 py-2">{{ keranjang.jumlah_pemesanan }}</td>
-                  <td class="px-4 py-2 text-right">Rp. {{ keranjang.products.harga }}</td>
-                  <td class="px-4 py-2 text-right">
-                    <strong>Rp. {{ keranjang.products.harga * keranjang.jumlah_pemesanan }}</strong>
-                  </td>
-                  <td class="px-4 py-2 text-center text-red-500 cursor-pointer">
-                    <b-icon-trash @click="hapusKeranjang(keranjang.id)"></b-icon-trash>
-                  </td>
-                </tr>
+      <div class="mt-4">
+        <h2 class="text-xl md:text-2xl font-bold mb-4">
+          Keranjang
+          <strong>Saya</strong>
+        </h2>
+        <div class="overflow-x-auto mt-3">
+          <table class="table-auto w-full text-left text-xs md:text-sm">
+            <thead>
+              <tr class="bg-gray-200">
+                <th class="px-2 md:px-4 py-2">#</th>
+                <th class="px-2 md:px-4 py-2">Foto</th>
+                <th class="px-2 md:px-4 py-2">Makanan</th>
+                <th class="px-2 md:px-4 py-2">Keterangan</th>
+                <th class="px-2 md:px-4 py-2">Jumlah</th>
+                <th class="px-2 md:px-4 py-2">Harga</th>
+                <th class="px-2 md:px-4 py-2">Total Harga</th>
+                <th class="px-2 md:px-4 py-2">Hapus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(keranjang, index) in keranjangs" :key="keranjang.id" class="border-b">
+                <td class="px-2 md:px-4 py-2">{{ index + 1 }}</td>
+                <td class="px-2 md:px-4 py-2">
+                  <img :src="'../assets/images/' + keranjang.products.gambar" class="w-16 h-16 md:w-32 md:h-32 object-cover rounded-lg shadow" />
+                </td>
+                <td class="px-2 md:px-4 py-2">
+                  <strong>{{ keranjang.products.nama }}</strong>
+                </td>
+                <td class="px-2 md:px-4 py-2">{{ keranjang.keterangan ? keranjang.keterangan : "-" }}</td>
+                <td class="px-2 md:px-4 py-2">{{ keranjang.jumlah_pemesanan }}</td>
+                <td class="px-2 md:px-4 py-2 text-right">Rp. {{ keranjang.products.harga }}</td>
+                <td class="px-2 md:px-4 py-2 text-right">
+                  <strong>Rp. {{ keranjang.products.harga * keranjang.jumlah_pemesanan }}</strong>
+                </td>
+                <td class="px-2 md:px-4 py-2 text-center text-red-500 cursor-pointer">
+                  <b-icon-trash @click="hapusKeranjang(keranjang.id)"></b-icon-trash>
+                </td>
+              </tr>
 
-                <tr>
-                  <td colspan="6" class="px-4 py-2 text-right font-bold">
-                    Total Harga:
-                  </td>
-                  <td colspan="2" class="px-4 py-2 text-right font-bold">
-                    Rp. {{ totalHarga }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              <tr>
+                <td colspan="6" class="px-2 md:px-4 py-2 text-right font-bold">
+                  Total Harga:
+                </td>
+                <td colspan="2" class="px-2 md:px-4 py-2 text-right font-bold">
+                  Rp. {{ totalHarga }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
       <!-- Form Checkout -->
-      <div class="row justify-content-end mt-8">
-        <div class="col-md-4">
-          <form class="mt-4" v-on:submit.prevent>
-            <div class="form-group mb-4">
-              <label for="nama" class="block text-gray-700 font-medium mb-2">Nama:</label>
-              <input type="text" class="form-control w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" v-model="pesan.nama" />
-            </div>
-            <div class="form-group mb-4">
-              <label for="noMeja" class="block text-gray-700 font-medium mb-2">Nomor Meja:</label>
-              <input type="text" class="form-control w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" v-model="pesan.noMeja" />
-            </div>
+      <div class="mt-8">
+        <form class="mt-4" v-on:submit.prevent>
+          <div class="form-group mb-4">
+            <label for="nama" class="block text-gray-700 font-medium mb-2">Nama:</label>
+            <input type="text" class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300" v-model="pesan.nama" />
+          </div>
+          <div class="form-group mb-4">
+            <label for="noMeja" class="block text-gray-700 font-medium mb-2">Nomor Meja:</label>
+            <input type="text" class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300" v-model="pesan.noMeja" />
+          </div>
 
-            <button type="submit" class="btn bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 float-right" @click="checkout">
-              <b-icon-cart></b-icon-cart> Pesan
-            </button>
-          </form>
-        </div>
+          <button type="submit" class="w-full md:w-auto bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 flex items-center justify-center" @click="checkout">
+            <b-icon-cart class="mr-2"></b-icon-cart> Pesan
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -183,5 +177,5 @@ export default {
 </script>
 
 <style scoped>
-/* Anda bisa menambahkan kustomisasi CSS tambahan di sini */
+/* Customisasi CSS tambahan bisa ditambahkan di sini jika diperlukan */
 </style>
