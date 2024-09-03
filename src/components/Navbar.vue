@@ -23,11 +23,11 @@
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2">
-          <button type="button" class="bg-gray-800 p-1 rounded-full text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L6 17h12M7 13l-4-8m14 0h2a1 1 0 01.993.883L21 6v12a2 2 0 01-1.85 1.995L19 20H5a2 2 0 01-1.995-1.85L3 18V6a1 1 0 01.883-.993L4 5h16-2m-4-2h2V2H8v2h2" />
-            </svg>
-          </button>
+          <router-link to="/keranjang"><img src="../assets/logo/cart.png" alt="cart" width="60%">
+            <!-- <span class="bg-green-500 text-white text-sm font-semibold px-2 py-1 rounded ml-2">
+              {{ updateKeranjang ? updateKeranjang.length : jumlah_pesanans.length }}
+            </span> -->
+          </router-link>
         </div>
       </div>
     </div>

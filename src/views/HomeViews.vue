@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar />
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 md:px-8 lg:px-16 max-w-screen-xl">
       <Hero />
 
       <div class="flex justify-between items-center mt-4">
@@ -20,28 +20,47 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 mb-4">
         <div v-for="product in products" :key="product.id">
-          <CardProduct :product="product"/>
+          <CardProduct :product="product" />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
-import Navbar from '../components/Navbar.vue'
+import Navbar from '../components/Navbar.vue';
 import Hero from '../components/Hero.vue';
-
+import CardProduct from '../components/CardProduct.vue';
+import axios from "axios";
 
 export default {
   name: 'HomeViews',
-  components:{
+  components: {
     Navbar,
     Hero,
-  }
-}
+    CardProduct,
+  },
+  data() {
+    return {
+      products: [],
+    };
+  },
+  methods: {
+    setProducts(data) {
+      this.products = data;
+    },
+  },
+  mounted() {
+    axios
+      .get("http://localhost:3000/best-products")
+      .then((response) => this.setProducts(response.data))
+      .catch((error) => console.log(error));
+  },
+};
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  max-width: 100%;
+}
 </style>

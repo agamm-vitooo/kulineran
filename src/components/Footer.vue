@@ -4,7 +4,7 @@
       <div class="container">
           <div class="row">
               <div class="col text-center">
-                  2020 Copyright WAHIDEV ACADEMY
+                  2024 - Kulineran
               </div>
           </div>
       </div>

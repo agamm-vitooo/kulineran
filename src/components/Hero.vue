@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="w-full md:w-1/2">
-          <img src="../assets/images/hero.jpg" class="w-full" />
+          <img src="../assets/images/hero.jpg" class="w-full" loading="lazy" />
         </div>
       </div>
     </div>
@@ -30,11 +30,11 @@
     <div class="block md:hidden">
       <div class="flex flex-col mt-4">
         <div class="mb-3 w-full">
-          <img src="../assets/images/hero.jpg" class="w-full" />
+          <img src="../assets/images/hero.jpg" class="w-full" loading="lazy" />
         </div>
         <div class="w-full">
           <div class="flex h-full">
-            <div class="m-auto text-center">
+            <div class="text-left">
               <h2 class="text-2xl font-bold">
                 Delicious Food Menu,
                 <br />in Your Gadget
